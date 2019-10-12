@@ -7,3 +7,5 @@ __pycache__/
 data/beer/*.gz
 *.DS_Store
 solutions/
+*.h5
+*.png
