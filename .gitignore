@@ -9,3 +9,4 @@ data/beer/*.gz
 solutions/
 *.h5
 *.png
+*tensorboard_log*
