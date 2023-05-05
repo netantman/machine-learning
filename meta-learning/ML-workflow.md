@@ -1,8 +1,9 @@
 # Problem Formulation/Definition
 
-- What is the core business problem/dependent variable we are trying to model: determine potentially which ML models we need.
+- What is the **core business problem**/**dependent variable** we are trying to model: determine potentially which ML models we need.
     - 'Predicting stock returns': regreesion; 'Predicting stock price change directions': classification. 
-- What are the performance metrics to satisfy business goals?
+    - Remember to ask clarifying questions.
+- What are the right **performance metrics** to satisfy business goals?
     - What value is added for the business?
     - If a wrong prediction is made, how does it impact the business?
 - [Scope](scoping.ipynb) of the project. 
@@ -20,7 +21,14 @@
 
 # Data
 
--
+- Talk/brainstorm sourcing data
+    - What data fields can be useful? (Probably need inspirations from ChatGPT)
+    - Where do you source the data?
+    - At what frequency do you need to source the data?
+    
+## EDA
+
+## Feature Engineering
 
 # Modeling
 
