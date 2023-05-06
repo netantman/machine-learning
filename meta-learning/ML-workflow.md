@@ -67,9 +67,9 @@ See [data-checks](data/data-checks.ipynb).
 
 - **Economic intuitions**: probably need inspirations from <font color=red> ChatGPT </font>
 
-- **Scaling**: min-max, normalization and standardization.
+- **Scaling**: min-max, normalization and standardization - just be very careful to do consistently across training and testing.
 
-- **Encoding**: one-hot encoding (embedding), label encoding, and binary encoding.
+- **Encoding**: one-hot encoding (embedding), ordinal encoding, and binary encoding.
 
 - **Imputation**: mean/median/mode interpolation, linear interpolation, [kNN](../../supervised_learning/kNN.ipynb); note that sometimes missing data can simply be dropped.
 
@@ -89,20 +89,88 @@ See [data-checks](data/data-checks.ipynb).
 
 # Modeling
 
-### Models
+## Model selection (MVP)
 
-#### Supervised Learning
+- Heuristics -> simple model -> more complex model -> ensemble of models
+    - Pros and cons, and decision
+    - Note: Always start as simple as possible (KISS) and iterate over
 
-#### Unsupervised Learning
+- Typical modeling choices:
+    - Logistic Regression
+    - Linear regression
+    - Decision tree variants
+    - SVM
+    - Neural networks
+        - MLP
+        - CNN
+        - RNN
+        - Transformers
+    - [emsemble](ensemble.ipynb)
+- [Decision Factors](supervised-learning/pros-n-cons.ipynb)
+    - Complexity of the task
+    - Data: Type of data (structured, unstructured), amount of data, complexity of data
+    - Training speed
+    - Inference requirements: compute, latency, memory
+    - Continual learning/online learning
+    - [Interpretability](models/interpretability-explanability.ipynb)
 
-### Model Selection
 
-(bullet points in Ace Book)
+## Data aspect of modeling
 
-### Tuning Machine Learning Models
+- Sampling
+    - Non-probabilistic sampling
+    - random, stratified, reservoir, importance sampling
 
-### Input/Output Format and Representation (Probably part of model)
+- Data splits (train, dev, test)
+    - Portions
+    - Splitting time-correlated data (split by time): seasonality, trend
+    - Data leakage hazard:
+        - scale after split,
+        - use only train split for stats, scaling, and missing vals
 
-# Performance Metrics/Evaluation
+- Class Imbalance
+    - Resampling
+    - weighted loss function
+    - combining classes
+
+- Input/Output Representation
+    
+## Tuning ML models
+
+- Loss functions
+    - MSE
+    - Binary/Categorical CE
+    - Entropy
+    - MAE
+    - Huber loss
+    - Hinge loss
+    - Contrastive loss
+    - log likelihood
+    
+- Optimizers
+    - SGD: too much training data?
+    - AdaGrad
+    - RMSProp
+    - Adam
+
+- Model training
+    - Training from scratch or fine-tune
+
+- Debugging
+
+- Offline vs online training
+
+- [Model offline evaluation](models/evaluation-metrics-and-information-criterions.ipynb)
+
+- Hyperparameter searching
+    - Grid search
+    - Random search
+    - Bayesian optimization
+
+- Iterate over MVP model 
+    - Data augmentation
+    - Model update frequency
+
+# Domain-Specific Performance Metrics/Evaluation
 
 # Deployment
