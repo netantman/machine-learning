@@ -63,9 +63,9 @@ See [data-checks](data/data-checks.ipynb).
 - **Dimension reduction**: Inspect what the principle directions and principle components are - [PCA](../unsupervised-learning/PCA.ipynb)
 - **Cluster analysis**: [K-Means](unsupervised-learning/Kmeans.ipynb)
 
-### Feature Engineering
+### [Feature Engineering](data/data-preprocessing-feature-engineering.ipynb)
 
-- **Economic intuitions**: probably need inspirations from <font color=red> ChatGPT </font>
+- **Economic intuitions**: probably need inspirations from **ChatGPT**
 
 - **Scaling**: min-max, normalization and standardization - just be very careful to do consistently across training and testing.
 
@@ -79,26 +79,21 @@ See [data-checks](data/data-checks.ipynb).
 
 - **Dimensionality Reduction**: [PCA](../unsupervised-learning/PCA.ipynb)
 
-- **Feature Selection**: 
-    - **Correlation analysis**
-    - **Mutual information**
-    - **Chi-square test**: used only for categorical features, and measures the dependence between feature and target variable
-    - **Recursive feature elimination**: see examples in [linear-regression](../../supervised-learning/linear-regression.ipynb)
-    - **L1 regularization, or lasso**
+- [**Feature Selection**](data/feature-selection.ipynb)
  
 
 # Modeling
 
-## Model selection (MVP)
+## Model selection
 
 - Heuristics -> simple model -> more complex model -> ensemble of models
     - Pros and cons, and decision
     - Note: Always start as simple as possible (KISS) and iterate over
 
-- Typical modeling choices:
+- Typical modeling choices
     - Logistic Regression
     - Linear regression
-    - Decision tree variants
+    - Decision tree and variants: random forest, boosting
     - SVM
     - Neural networks
         - MLP
@@ -121,7 +116,7 @@ See [data-checks](data/data-checks.ipynb).
     - Non-probabilistic sampling
     - random, stratified, reservoir, importance sampling
 
-- Data splits (train, dev, test)
+- [Cross-validation](cross-validation-and-backtesting.ipynb)
     - Portions
     - Splitting time-correlated data (split by time): seasonality, trend
     - Data leakage hazard:
@@ -153,9 +148,6 @@ See [data-checks](data/data-checks.ipynb).
     - RMSProp
     - Adam
 
-- Model training
-    - Training from scratch or fine-tune
-
 - Debugging
 
 - Offline vs online training
@@ -172,5 +164,7 @@ See [data-checks](data/data-checks.ipynb).
     - Model update frequency
 
 # Domain-Specific Performance Metrics/Evaluation
+
+- [Investment metrics](domain-specific-metrics/investment-metrics.ipynb)
 
 # Deployment
