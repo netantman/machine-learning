@@ -7,9 +7,9 @@
     - What value is added for the business?
     - If a wrong prediction is made, how does it impact the business?
 - [Scope](problem-definition/scoping.ipynb) of the project. 
-    - How good does it need to be so as to considered a success?
     - Are there **benchmarks**? Human-level performance?
     - Are there reasons (economically or common-sense) that the data has informative information about the dependent variable?
+    - How good does it need to be so as to considered a success? What is the **hurdle rate**?
 - System Limitations
     - What is the **budget**?
     - What is the **latency** needed?
@@ -24,7 +24,7 @@
 
 ### Sourcing data
 
-- **What data fields** can be useful? (Probably need inspirations from <font color=red> ChatGPT </font>)
+- **What data fields** can be useful? (Probably need inspirations from **ChatGPT**)
 - **Where do you source the data** and **how costly** is the data?
 - At what **frequency** do you need to source the data?
 - How long should you spend sourcing data？
@@ -45,17 +45,16 @@
 - **Consistent labeling**: there is no ambiguities or noise in $p(y|x)$. 
     - Eliminating labeling ambiguities sometimes is more effective in improving data quality and algo effectiveness, than obtaining more data.
 - $p(x)$ **covers the whole feature space**.
-- There is **no uninformative data**: watch out for **sparseness** and **low variance** columns; see the discussion of [degenerate distributions](data/feature-selection.ipynb).
+- There is **no uninformative data**: watch out for **sparseness** and **low variance** columns; see the discussion of [degenerate distributions](data/feature-selection.ipynb) in the feature selection notebook.
 - **Size appropriately**: sufficiently big for models to learn but not too much for models to train; further notes on [dataset size](data/data-size.ipynb)
 
-#### Some other things to check
+#### Some other things to [check](data/data-checks.ipynb)
 
-See [data-checks](data/data-checks.ipynb).
-- Leakage: $y$ accidentally a column in $X$.
-- Distributional bias between training and serving data.
-- Nonstationary in data
+- **Leakage**: $y$ accidentally a column in $X$; this is different than the type of leakage encountered in cross-validation.
+- **Distributional bias** between training and serving data.
+- **Non-stationary** in data
     - What are the ways to check?
-    - If non-stationary data is not avoidable, what are other remediations?
+    - If non-stationary data is not avoidable, determine the best frequency to recalibrate/retrain the model.
 
     
 ### EDA
@@ -65,28 +64,28 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
 - **Summary statistics**: sample mean, median, mode, standard deviations, quantiles.
 - **Data visualization**: 
     - histograms or density plots: on $X$ 
-    - box plots (for outlier detection), 
+    - box plots (for outlier detection): on $X$ and/or $y$
     - [scatter plots](data/scatter-further-note.ipynb) between $X$ and $y$
         - works particularly well for low-dimensional $X$;
         - for high-dimensional $X$, maybe a slice of data), .
 - **Correlations**: among $X$ and between $X$ and $y$; good to also show scatter plots.
 - **Outlier detection**: z-score, interquartile range (IQR)
-- **Dimension reduction**: Inspect what the principle directions and principle components are - [PCA](../unsupervised-learning/PCA.ipynb)
-- **Cluster analysis**: [K-Means](unsupervised-learning/Kmeans.ipynb)
+- **Dimension reduction**: Inspect principle directions and principle components for insights - [PCA](../unsupervised-learning/PCA.ipynb)
+- **Cluster analysis**: [K-Means](../unsupervised-learning/Kmeans.ipynb)
 
 ### [Feature Engineering](data/data-preprocessing-feature-engineering.ipynb)
 
-- **Economic intuitions**: probably need inspirations from **ChatGPT**
+- **From economic intuitions**: probably need inspirations from **ChatGPT**
 
 - **Scaling**: min-max, normalization and standardization - just be very careful to do consistently across training and testing.
 
 - **Encoding**: one-hot encoding (embedding), ordinal encoding, and binary encoding.
 
-- **Imputation**: mean/median/mode interpolation, linear interpolation, [kNN](../../supervised_learning/kNN.ipynb); note that sometimes missing data can simply be dropped.
-
 - **Transformation**: log transformation, square root transformation, power transformation and quantile transformation.
 
 - **Non-linearity and higher-order**: hinge transform, cross products of features; see [MARS](../../supervised_learning/MARS.ipynb)
+
+- **Dealing with Missing Data**: mean/median/mode interpolation, linear interpolation, [kNN](../../supervised_learning/kNN.ipynb); note that sometimes missing data can simply be dropped.
 
 - **Dimensionality Reduction**: [PCA](../unsupervised-learning/PCA.ipynb)
 
@@ -99,8 +98,8 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
 
 - Heuristics -> simple model -> more complex model -> ensemble of models; see [model-tips](models/model-tips.ipynb)
     - Pros and cons, and decision
-    - The benefit of trying at least two kinds of models: a baseline model and a complex model
-    - Note: Always start as simple as possible (KISS) and iterate over: **do not prematurely statistical optimization**.
+    - The benefit of trying at least two kinds of models: a **most baseline model** and a **most complex model**
+    - Always start as simple as possible (KISS) and iterate over: **do not prematurely statistical optimization**.
 
 - Typical modeling choices
     - [Linear regression](../supervised-learning/linear-regression.ipynb)
@@ -124,7 +123,7 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
 
 ## Data aspect of modeling
 
-- Sampling
+- Sampling: when you have too much data
     - Non-probabilistic sampling
     - random, stratified, reservoir, importance sampling
 
@@ -156,13 +155,8 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
 - [Cross-validation](models/cross-validation-and-backtesting.ipynb)
     - Portions
     - Splitting time-correlated data (split by time): seasonality, trend, embargo
-    - Data leakage hazard:
-        - scale after split,
-        - use only train split for stats, scaling, and missing vals
-    - Hyperparameter searching
-        - Grid search
-        - Random search
-        - Bayesian optimization
+    - Data leakage hazard: improper pre-scaling, duplicates, temporal data
+    - Hyperparameter searching: grid search, random search, Bayesian optimization
 
 - Debugging or curating ML models
     - [Error analysis](models/error-analysis.ipynb)
