@@ -23,6 +23,7 @@
 # Data
 
 ### Sourcing data
+
 - **What data fields** can be useful? (Probably need inspirations from <font color=red> ChatGPT </font>)
 - **Where do you source the data** and **how costly** is the data?
 - At what **frequency** do you need to source the data?
@@ -38,16 +39,19 @@
 
 ### Cleaning and checking Data
 
-#### What is good data
+#### What is good, clean data
+
 - **No missing, duplicated or erroneous** values: what counts as erroneous or outliers could be debatable.
 - **Consistent labeling**: there is no ambiguities or noise in $p(y|x)$. 
     - Eliminating labeling ambiguities sometimes is more effective in improving data quality and algo effectiveness, than obtaining more data.
-- $p(x)$ covers the whole feature space.
-- **Size appropriately**: there is **no uninformative data**, yet sufficiently big for models to learn.
+- $p(x)$ **covers the whole feature space**.
+- There is **no uninformative data**: watch out for **sparseness** and **low variance** columns; see the discussion of [degenerate distributions](data/feature-selection.ipynb).
+- **Size appropriately**: sufficiently big for models to learn but not too much for models to train; further notes on [dataset size](data/data-size.ipynb)
 
 #### Some other things to check
+
 See [data-checks](data/data-checks.ipynb).
-- Leakage
+- Leakage: $y$ accidentally a column in $X$.
 - Distributional bias between training and serving data.
 - Nonstationary in data
     - What are the ways to check?
@@ -56,9 +60,16 @@ See [data-checks](data/data-checks.ipynb).
     
 ### EDA
 
+The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
+
 - **Summary statistics**: sample mean, median, mode, standard deviations, quantiles.
-- **Data visualization**: histograms, box plots (for outlier detection), scatter plots (for high-dimensional $x$, maybe a slice of data), density plots.
-- **Correlations**: among $x$ and between $x$ and $y$; good to also show scatter plots.
+- **Data visualization**: 
+    - histograms or density plots: on $X$ 
+    - box plots (for outlier detection), 
+    - [scatter plots](data/scatter-further-note.ipynb) between $X$ and $y$
+        - works particularly well for low-dimensional $X$;
+        - for high-dimensional $X$, maybe a slice of data), .
+- **Correlations**: among $X$ and between $X$ and $y$; good to also show scatter plots.
 - **Outlier detection**: z-score, interquartile range (IQR)
 - **Dimension reduction**: Inspect what the principle directions and principle components are - [PCA](../unsupervised-learning/PCA.ipynb)
 - **Cluster analysis**: [K-Means](unsupervised-learning/Kmeans.ipynb)
@@ -86,25 +97,26 @@ See [data-checks](data/data-checks.ipynb).
 
 ## Model selection
 
-- Heuristics -> simple model -> more complex model -> ensemble of models
+- Heuristics -> simple model -> more complex model -> ensemble of models; see [model-tips](models/model-tips.ipynb)
     - Pros and cons, and decision
-    - Note: Always start as simple as possible (KISS) and iterate over
+    - The benefit of trying at least two kinds of models: a baseline model and a complex model
+    - Note: Always start as simple as possible (KISS) and iterate over: **do not prematurely statistical optimization**.
 
 - Typical modeling choices
-    - Logistic Regression
-    - Linear regression
-    - Decision tree and variants: random forest, boosting
-    - SVM
+    - [Linear regression](../supervised-learning/linear-regression.ipynb)
+    - [Logistic Regression](../supervised-learning/logistic-regression.ipynb)
+    - [Decision tree](../supervised-learning/CART.ipynb) and variants: [bagging](../supervised-learning/boosting.ipynb), [random forest](../supervised-learning/random-forest.ipynb), [boosting](../supervised-learning/boosting.ipynb)
+    - [SVM](../supervised-learning/SVM.ipynb)
     - Neural networks
-        - MLP
-        - CNN
-        - RNN
+        - [MLP](../supervised-learning/MLP.ipynb)
+        - [CNN](../supervised-learning/CNN.ipynb)
+        - [RNN](../supervised-learning/RNN.ipynb)
         - Transformers
     - [emsemble](ensemble.ipynb)
-- [Decision Factors](supervised-learning/pros-n-cons.ipynb)
+- [Decision Factors](../supervised-learning/pros-n-cons.ipynb)
     - Complexity of the task
     - Data: Type of data (structured, unstructured), amount of data, complexity of data
-    - Training speed
+    - Training time
     - Inference requirements: compute, latency, memory
     - Continual learning/online learning
     - [Interpretability](models/interpretability-explanability.ipynb)
@@ -116,16 +128,9 @@ See [data-checks](data/data-checks.ipynb).
     - Non-probabilistic sampling
     - random, stratified, reservoir, importance sampling
 
-- [Cross-validation](cross-validation-and-backtesting.ipynb)
-    - Portions
-    - Splitting time-correlated data (split by time): seasonality, trend
-    - Data leakage hazard:
-        - scale after split,
-        - use only train split for stats, scaling, and missing vals
-
 - Class Imbalance
     - Resampling
-    - weighted loss function
+    - weighted loss function: focal loss
     - combining classes
 
 - Input/Output Representation
@@ -134,37 +139,49 @@ See [data-checks](data/data-checks.ipynb).
 
 - Loss functions
     - MSE
-    - Binary/Categorical CE
-    - Entropy
     - MAE
     - Huber loss
-    - Hinge loss
-    - Contrastive loss
     - log likelihood
+    - Binary/Categorical cross entropy (or KL Divergence)
+    - Focal loss: the loss function for classification that deals with class imbalance
+    - Hinge loss
     
-- Optimizers
-    - SGD: too much training data?
+- [Optimizers](models/optimizers.ipynb)
+    - SGD: for too much training data?
+    - BGD
     - AdaGrad
     - RMSProp
     - Adam
+    
+- [Cross-validation](models/cross-validation-and-backtesting.ipynb)
+    - Portions
+    - Splitting time-correlated data (split by time): seasonality, trend, embargo
+    - Data leakage hazard:
+        - scale after split,
+        - use only train split for stats, scaling, and missing vals
+    - Hyperparameter searching
+        - Grid search
+        - Random search
+        - Bayesian optimization
 
-- Debugging
+- Debugging or curating ML models
+    - [Error analysis](models/error-analysis.ipynb)
+    - [Curating ML models](models/curating-ML-models.ipynb)
+    - [Regularization](models/regularization.ipynb)
+    - [Early stopping](models/early-stopping.ipynb)
+    - [Experiment Tracking](models/experiment-tracking.ipynb)
+    - [Performance Auditing and Sensitivity Analysis](models/performance-audit-sensitivity-analysis.ipynb)
 
-- Offline vs online training
 
 - [Model offline evaluation](models/evaluation-metrics-and-information-criterions.ipynb)
 
-- Hyperparameter searching
-    - Grid search
-    - Random search
-    - Bayesian optimization
+- Offline vs online training: what should be the frequency to recalibrate the model?
 
-- Iterate over MVP model 
-    - Data augmentation
-    - Model update frequency
 
 # Domain-Specific Performance Metrics/Evaluation
 
 - [Investment metrics](domain-specific-metrics/investment-metrics.ipynb)
 
 # Deployment
+
+- [deployment](deployment/MLOps-deployment.ipynb)
