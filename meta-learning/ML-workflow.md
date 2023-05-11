@@ -1,8 +1,9 @@
 # Problem Formulation/Definition
 
 - What is the **core business problem**/**dependent variable** we are trying to model: determine potentially which ML models we need.
-    - 'Predicting stock returns': regreesion; 'Predicting stock price change directions': classification. 
-    - Remember to ask clarifying questions.
+    - 'Predicting stock returns': regression; 'Predicting stock price change directions': classification. 
+    - Remember to ask **clarifying questions**
+    - Does it make sense to predict **another, related variable**?
 - What are the right **performance metrics** to satisfy business goals?
     - What value is added for the business?
     - If a wrong prediction is made, how does it impact the business?
@@ -36,6 +37,7 @@
     - Semi-supervised learning
     - Active learning: margin sampling, clustered-based sampling, query-by-commitee, region-based sampling
     - Weak supervision
+    - Note: advanced labeling is to deal with missing $y$, not missing $X$.
 
 ### Cleaning and checking Data
 
@@ -44,7 +46,7 @@
 - **No missing, duplicated or erroneous** values: what counts as erroneous or outliers could be debatable.
 - **Consistent labeling**: there is no ambiguities or noise in $p(y|x)$. 
     - Eliminating labeling ambiguities sometimes is more effective in improving data quality and algo effectiveness, than obtaining more data.
-- $p(x)$ **covers the whole feature space**.
+- $p(x)$ **covers the whole feature space**, or the desired region.
 - There is **no uninformative data**: watch out for **sparseness** and **low variance** columns; see the discussion of [degenerate distributions](data/feature-selection.ipynb) in the feature selection notebook.
 - **Size appropriately**: sufficiently big for models to learn but not too much for models to train; further notes on [dataset size](data/data-size.ipynb)
 
@@ -85,11 +87,11 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
 
 - **Non-linearity and higher-order**: hinge transform, cross products of features; see [MARS](../../supervised_learning/MARS.ipynb)
 
-- **Dealing with Missing Data**: mean/median/mode interpolation, linear interpolation, [kNN](../../supervised_learning/kNN.ipynb); note that sometimes missing data can simply be dropped.
+- **Dealing with Missing Data**: mean/median/mode interpolation, linear interpolation, [kNN](../../supervised_learning/kNN.ipynb), random sampling; note that sometimes missing data can simply be dropped.
 
 - **Dimensionality Reduction**: [PCA](../unsupervised-learning/PCA.ipynb)
 
-- [**Feature Selection**](data/feature-selection.ipynb)
+- [**Feature Selection**](data/feature-selection.ipynb): what are the **advantages** of feature selections?
  
 
 # Modeling
@@ -106,13 +108,14 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
     - [Logistic Regression](../supervised-learning/logistic-regression.ipynb)
     - [Decision tree](../supervised-learning/CART.ipynb) and variants: [bagging](../supervised-learning/boosting.ipynb), [random forest](../supervised-learning/random-forest.ipynb), [boosting](../supervised-learning/boosting.ipynb)
     - [SVM](../supervised-learning/SVM.ipynb)
+    - [MARS](../supervised-learning/MARS.ipynb)
     - Neural networks
         - [MLP](../supervised-learning/MLP.ipynb)
         - [CNN](../supervised-learning/CNN.ipynb)
         - [RNN](../supervised-learning/RNN.ipynb)
         - Transformers
     - [emsemble](ensemble.ipynb)
-- [Decision Factors](../supervised-learning/pros-n-cons.ipynb)
+- [Things to consider](../supervised-learning/pros-n-cons.ipynb)
     - Complexity of the task
     - Data: Type of data (structured, unstructured), amount of data, complexity of data
     - Training time
@@ -145,7 +148,7 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
     - Focal loss: the loss function for classification that deals with class imbalance
     - Hinge loss
     
-- [Optimizers](models/optimizers.ipynb)
+- [Optimizers](models/optimizers.ipynb): make sure you know their formulae
     - SGD: for too much training data?
     - BGD
     - AdaGrad
