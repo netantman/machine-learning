@@ -178,6 +178,12 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
 # Domain-Specific Performance Metrics/Evaluation
 
 - [Investment metrics](domain-specific-metrics/investment-metrics.ipynb)
+    - General characteristics
+    - Performance
+    - Runs
+    - Implementation Shortfall
+    - Efficiency Ratios
+    
 
 # Deployment
 
