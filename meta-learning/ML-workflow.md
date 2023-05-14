@@ -1,8 +1,8 @@
 # Problem Formulation/Definition
 
 - What is the **core business problem**/**dependent variable** we are trying to model: determine potentially which ML models we need.
-    - 'Predicting stock returns': regression; 'Predicting stock price change directions': classification. 
     - Remember to ask **clarifying questions**
+    - For instance, 'Predicting stock returns': regression; 'Predicting stock price change directions': classification. 
     - Does it make sense to predict **another, related variable**?
 - What are the right **performance metrics** to satisfy business goals?
     - What value is added for the business?
@@ -20,6 +20,7 @@
 - Other considerations
     - Is ML even needed? Can we use a simple heurestics or rules?
     - Are there legal or regulatory risks associated with the project?
+- Draw a diagram similar to [this one](problem-definition/MLOps-overview.ipynb), setting the groundwork for discussion.
 
 # Data
 
@@ -85,9 +86,9 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
 
 - **Transformation**: log transformation, square root transformation, power transformation and quantile transformation.
 
-- **Non-linearity and higher-order**: hinge transform, cross products of features; see [MARS](../../supervised_learning/MARS.ipynb)
+- **Non-linearity and higher-order**: hinge transform, cross products of features; see [MARS](../supervised_learning/MARS.ipynb)
 
-- **Dealing with Missing Data**: mean/median/mode interpolation, linear interpolation, [kNN](../../supervised_learning/kNN.ipynb), random sampling; note that sometimes missing data can simply be dropped.
+- **Dealing with Missing Data**: mean/median/mode interpolation, linear interpolation, [kNN](../supervised_learning/kNN.ipynb), random sampling; note that sometimes missing data can simply be dropped.
 
 - **Dimensionality Reduction**: [PCA](../unsupervised-learning/PCA.ipynb)
 
@@ -98,7 +99,7 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
 
 ## Model selection
 
-- Heuristics -> simple model -> more complex model -> ensemble of models; see [model-tips](models/model-tips.ipynb)
+- Heuristics -> simple model -> more complex model -> ensemble of models; see [model-tips](models/models-tips.ipynb)
     - Pros and cons, and decision
     - The benefit of trying at least two kinds of models: a **most baseline model** and a **most complex model**
     - Always start as simple as possible (KISS) and iterate over: **do not prematurely statistical optimization**.
@@ -115,6 +116,7 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
         - [RNN](../supervised-learning/RNN.ipynb)
         - Transformers
     - [emsemble](ensemble.ipynb)
+    - [Gaussian processes](../supervised-learning/gaussian-process.ipynb)
 - [Things to consider](../supervised-learning/pros-n-cons.ipynb)
     - Complexity of the task
     - Data: Type of data (structured, unstructured), amount of data, complexity of data
@@ -185,6 +187,4 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
     - Efficiency Ratios
     
 
-# Deployment
-
-- [deployment](deployment/MLOps-deployment.ipynb)
+# [Deployment](deployment/MLOps-deployment.ipynb)
