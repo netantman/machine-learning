@@ -193,8 +193,9 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
     - General characteristics
     - Performance
     - Runs
-    - Implementation Shortfall
     - Efficiency Ratios
+    - Implementation Shortfall 
+        - This is beyond backtesting or evaluation of ML though: more on the alley of simulator or paper trading, which conceptually is after backtesting on out-of-sample/test data.
     
 
 # [Deployment](deployment/MLOps-deployment.ipynb)
