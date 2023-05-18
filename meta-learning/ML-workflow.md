@@ -104,10 +104,14 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
     - The benefit of trying at least two kinds of models: a **most baseline model** and a **most complex model**
     - Always start as simple as possible (KISS) and iterate over: **do not prematurely statistical optimization**.
 
-- Typical modeling choices
+- Typical models
     - [Linear regression](../supervised-learning/linear-regression.ipynb)
+    - [kNN](../supervised-learning/kNN.ipynb)
     - [Logistic Regression](../supervised-learning/logistic-regression.ipynb)
-    - [Decision tree](../supervised-learning/CART.ipynb) and variants: [bagging](../supervised-learning/boosting.ipynb), [random forest](../supervised-learning/random-forest.ipynb), [boosting](../supervised-learning/boosting.ipynb)
+    - [Decision tree](../supervised-learning/CART.ipynb) and variants 
+        - [bagging](../supervised-learning/boosting.ipynb) and [random forest](../supervised-learning/random-forest.ipynb)
+            - What are the two ways random forest employ to reduce overfitting?
+        - [boosting](../supervised-learning/boosting.ipynb)
     - [SVM](../supervised-learning/SVM.ipynb)
     - [MARS](../supervised-learning/MARS.ipynb)
     - Neural networks
@@ -117,6 +121,13 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
         - Transformers
     - [emsemble](ensemble.ipynb)
     - [Gaussian processes](../supervised-learning/gaussian-process.ipynb)
+    - [PCA](../unsupervised-learning/PCA.ipynb)
+        - What is the mathematical formulation?
+        - Is PCA scale invariant? What if we do not scale $X$ before we do PCA?
+        - Limitation of PCA?
+    - [Kmeans](../unsupervised-learning/Kmeans.ipynb)
+        - Describe the algorithm
+        - How to choose $K$?
 - [Things to consider](../supervised-learning/pros-n-cons.ipynb)
     - Complexity of the task
     - Data: Type of data (structured, unstructured), amount of data, complexity of data
@@ -142,24 +153,23 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
 ## Tuning ML models
 
 - Loss functions
-    - MSE
-    - MAE
-    - Huber loss
+    - MSE, MAE, Huber loss: which one is most sensitive to outliers?
     - log likelihood
     - Binary/Categorical cross entropy (or KL Divergence)
     - Focal loss: the loss function for classification that deals with class imbalance
-    - Hinge loss
+    - Hinge loss: see [SVM](../supervised-learning/SVM.ipynb)
     
-- [Optimizers](models/optimizers.ipynb): make sure you know their formulae
-    - SGD: for too much training data?
-    - BGD
-    - AdaGrad
-    - RMSProp
-    - Adam
+- [Optimizers](models/optimizers.ipynb): make sure you know their formulae or the rational
+    - SGD and BGD: motivation of random samples and batch?
+    - Further variants: AdaGrad, RMSProp, Adam
     
 - [Cross-validation](models/cross-validation-and-backtesting.ipynb)
+    - What is the purpose of doing cv? What could be the pitfalls?
+        - What is the one-standard-deviation rule?
+    - How would you relate cv and backtesting?
     - Portions
     - Splitting time-correlated data (split by time): seasonality, trend, embargo
+        - How to solve the lack-of-data problem when doing time-series cv or backtesting?
     - Data leakage hazard: improper pre-scaling, duplicates, temporal data
     - Hyperparameter searching: grid search, random search, Bayesian optimization
 
