@@ -48,7 +48,9 @@
 - **Consistent labeling**: there is no ambiguities or noise in $p(y|x)$. 
     - Eliminating labeling ambiguities sometimes is more effective in improving data quality and algo effectiveness, than obtaining more data.
 - $p(x)$ **covers the whole feature space**, or the desired region.
-- There is **no uninformative data**: watch out for **sparseness** and **low variance** columns; see the discussion of [degenerate distributions](data/feature-selection.ipynb) in the feature selection notebook.
+- There is **no uninformative data**.
+    - Watch out for **sparseness** and **low variance** columns; see the discussion of [degenerate distributions](data/feature-selection.ipynb) in the feature selection notebook.
+    - All variables of $X$ should bear some relationship with $y$.
 - **Size appropriately**: sufficiently big for models to learn but not too much for models to train; further notes on [dataset size](data/data-size.ipynb)
 
 #### Some other things to [check](data/data-checks.ipynb)
@@ -106,28 +108,47 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
 
 - Typical models
     - [Linear regression](../supervised-learning/linear-regression.ipynb)
+        - Assumptions, and what are the diagnostics for violations of them?
     - [kNN](../supervised-learning/kNN.ipynb)
+        - What is the formulation?
+        - What is its problem in high-dimension?
     - [Logistic Regression](../supervised-learning/logistic-regression.ipynb)
+        - What is the formulation, in particular, the loss function?
+        - How does it compare to other classification algorithms?
     - [Decision tree](../supervised-learning/CART.ipynb) and variants 
+        - What are the usual loss functions, for both regression and classification?
         - [bagging](../supervised-learning/boosting.ipynb) and [random forest](../supervised-learning/random-forest.ipynb)
             - What are the two ways random forest employ to reduce overfitting?
+            - How are feature importance defined?
+            - How is regularization done?/How do you deal with overfitting? 
         - [boosting](../supervised-learning/boosting.ipynb)
+            - Briefly describe the boosting algorithms?
+            - Difference between boosting and random forest?
+            - Difference between Adaboost and gradient boosting?
+            - How is regularization done?
     - [SVM](../supervised-learning/SVM.ipynb)
+        - Describe the intuition or formulation of the model?
+        - What is the kernel trick?
     - [MARS](../supervised-learning/MARS.ipynb)
+        - Briefly describe the algorithm?
+        - How is regularization done?
     - Neural networks
         - [MLP](../supervised-learning/MLP.ipynb)
+            - What are the special regulariation methods of MLPs?
         - [CNN](../supervised-learning/CNN.ipynb)
         - [RNN](../supervised-learning/RNN.ipynb)
         - Transformers
     - [emsemble](ensemble.ipynb)
     - [Gaussian processes](../supervised-learning/gaussian-process.ipynb)
+        - What is the formulation?
     - [PCA](../unsupervised-learning/PCA.ipynb)
         - What is the mathematical formulation?
         - Is PCA scale invariant? What if we do not scale $X$ before we do PCA?
-        - Limitation of PCA?
+        - Limitations of PCA?
     - [Kmeans](../unsupervised-learning/Kmeans.ipynb)
         - Describe the algorithm
         - How to choose $K$?
+
 - [Things to consider](../supervised-learning/pros-n-cons.ipynb)
     - Complexity of the task
     - Data: Type of data (structured, unstructured), amount of data, complexity of data
