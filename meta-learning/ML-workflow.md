@@ -114,7 +114,8 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
         - What is its problem in high-dimension?
     - [Logistic Regression](../supervised-learning/logistic-regression.ipynb)
         - What is the formulation, in particular, the loss function?
-        - How does it compare to other classification algorithms?
+        - How are parameters estimated?
+        - How does it compare to other classification algorithms? Advantages and diadvantages?
     - [Decision tree](../supervised-learning/CART.ipynb) and variants 
         - What are the usual loss functions, for both regression and classification?
         - [bagging](../supervised-learning/boosting.ipynb) and [random forest](../supervised-learning/random-forest.ipynb)
