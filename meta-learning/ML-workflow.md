@@ -35,9 +35,10 @@
     - See this [graph](data/time-getting-data.ipynb).
 - Stress the importance of **data pipelines**, **data lineage** and **data provinance**, as well as the idea of **versioning data**.
 - What are the **advanced labeling techniques**: [advanced-labeling](data/advanced-labeling.ipynb).
-    - Semi-supervised learning
-    - Active learning: margin sampling, clustered-based sampling, query-by-commitee, region-based sampling
-    - Weak supervision
+    - Semi-supervised learning: how unlabeled data is associated in the feature space
+    - Active learning: select the points to label that is most informative to the model
+        - margin sampling, clustered-based sampling, query-by-commitee, region-based sampling
+    - Weak supervision: generative model on weak learners
     - Note: advanced labeling is to deal with missing $y$, not missing $X$.
 
 ### Cleaning and checking Data
@@ -109,6 +110,11 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
 - Typical models
     - [Linear regression](../supervised-learning/linear-regression.ipynb)
         - Assumptions, and what are the diagnostics for violations of them?
+        - Closed-form of OLS? What are the geometric intuitions?
+        - What are the usual hypothesis testing on coefficients? What about on residuals?
+        - How is subset selection done?
+        - What are shrinkages?
+        - What are some variants of linear regressions when the classical assumptions are relaxed?
     - [kNN](../supervised-learning/kNN.ipynb)
         - What is the formulation?
         - What is its problem in high-dimension?
@@ -129,7 +135,7 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
             - How is regularization done?
     - [SVM](../supervised-learning/SVM.ipynb)
         - Describe the intuition or formulation of the model?
-        - What is the kernel trick?
+        - What is the kernel trick? How do you decide which kernels to use?
     - [MARS](../supervised-learning/MARS.ipynb)
         - Briefly describe the algorithm?
         - How is regularization done?
@@ -142,6 +148,7 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
     - [emsemble](ensemble.ipynb)
     - [Gaussian processes](../supervised-learning/gaussian-process.ipynb)
         - What is the formulation?
+        - Same topic of kernel as SVM.
     - [PCA](../unsupervised-learning/PCA.ipynb)
         - What is the mathematical formulation?
         - Is PCA scale invariant? What if we do not scale $X$ before we do PCA?
@@ -150,7 +157,7 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
         - Describe the algorithm
         - How to choose $K$?
 
-- [Things to consider](../supervised-learning/pros-n-cons.ipynb)
+- [Things to consider: pros and cons](../supervised-learning/pros-n-cons.ipynb)
     - Complexity of the task
     - Data: Type of data (structured, unstructured), amount of data, complexity of data
     - Training time
@@ -194,6 +201,9 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
         - How to solve the lack-of-data problem when doing time-series cv or backtesting?
     - Data leakage hazard: improper pre-scaling, duplicates, temporal data
     - Hyperparameter searching: grid search, random search, Bayesian optimization
+    - Backtesting methods: hypothesis testing, price simulation, trade simulation
+        - What is the multiple comparison problem? And how to resolve it?
+        - What are some backtesting pitfalls?
 
 - Debugging or curating ML models
     - [Error analysis](models/error-analysis.ipynb)
@@ -204,7 +214,7 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
     - [Performance Auditing and Sensitivity Analysis](models/performance-audit-sensitivity-analysis.ipynb)
 
 
-- [Model offline evaluation](models/evaluation-metrics-and-information-criterions.ipynb)
+- [Model offline evaluation: loss functions](models/evaluation-metrics-and-information-criterions.ipynb)
 
 - Offline vs online training: what should be the frequency to recalibrate the model?
 
