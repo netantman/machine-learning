@@ -208,7 +208,7 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
 - Debugging or curating ML models
     - [Error analysis](models/error-analysis.ipynb)
     - [Curating ML models](models/curating-ML-models.ipynb)
-    - [Regularization](models/regularization.ipynb)
+    - [Regularization](models/regularization.ipynb): is it that the more features the merrier for the model and what are the problems of curse of dimensionality?
     - [Early stopping](models/early-stopping.ipynb)
     - [Experiment Tracking](models/experiment-tracking.ipynb)
     - [Performance Auditing and Sensitivity Analysis](models/performance-audit-sensitivity-analysis.ipynb)
