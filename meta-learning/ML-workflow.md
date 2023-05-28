@@ -10,6 +10,8 @@
 - [Scope](problem-definition/scoping.ipynb) of the project. 
     - Are there **benchmarks**? Human-level performance?
     - Are there reasons (economically or common-sense) that the data has informative information about the dependent variable?
+        - Is is possible to run a **formal hypothesis testing**, or even **design a controlled experiment**?
+        - If a relationship is confirmed a priori, could there be a possibility that the causal relationship is reversed?
     - How good does it need to be so as to considered a success? What is the **hurdle rate**?
 - System Limitations
     - What is the **budget**?
