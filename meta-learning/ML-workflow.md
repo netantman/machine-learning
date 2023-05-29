@@ -183,7 +183,7 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
     
 ## Tuning ML models
 
-- Loss functions
+- [Loss functions]((models/evaluation-metrics-and-information-criterions.ipynb))
     - MSE, MAE, Huber loss: which one is most sensitive to outliers?
     - log likelihood
     - Binary/Categorical cross entropy (or KL Divergence)
@@ -214,9 +214,6 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
     - [Early stopping](models/early-stopping.ipynb)
     - [Experiment Tracking](models/experiment-tracking.ipynb)
     - [Performance Auditing and Sensitivity Analysis](models/performance-audit-sensitivity-analysis.ipynb)
-
-
-- [Model offline evaluation: loss functions](models/evaluation-metrics-and-information-criterions.ipynb)
 
 - Offline vs online training: what should be the frequency to recalibrate the model?
 
