@@ -1,17 +1,19 @@
 # Problem Formulation/Definition
 
-- What is the **core business problem**/**dependent variable** we are trying to model: determine potentially which ML models we need.
-    - Remember to ask **clarifying questions**
-    - For instance, 'Predicting stock returns': regression; 'Predicting stock price change directions': classification. 
-    - Does it make sense to predict **another, related variable**?
+- What is the **core business problem**/**dependent variable** we are trying to model: determine potentially which ML models we need. Remember to ask **clarifying questions**
+    - What is the **business use case** for this quantity that we are predicting/estimating?
+        - For instance, 'Predicting stock returns': regression; 'Predicting stock price change directions': classification.
+    - At **what frequency** do we need to make predictions?
+    - Could there be **multiple dependent variables**, which makes prediction workload a challenge?
+        - For instance, $10,000$ Walmart product prices daily for the $5,000$ stores in the US.
+    - Does it make sense to predict **another, related variable**? 
+    
 - What are the right **performance metrics** to satisfy business goals?
     - What value is added for the business?
     - If a wrong prediction is made, how does it impact the business?
 - [Scope](problem-definition/scoping.ipynb) of the project. 
     - Are there **benchmarks**? Human-level performance?
     - Are there reasons (economically or common-sense) that the data has informative information about the dependent variable?
-        - Is is possible to run a **formal hypothesis testing**, or even **design a controlled experiment**?
-        - If a relationship is confirmed a priori, could there be a possibility that the causal relationship is reversed?
     - How good does it need to be so as to considered a success? What is the **hurdle rate**?
 - System Limitations
     - What is the **budget**?
@@ -30,10 +32,14 @@
 
 - **What data fields** can be useful? (Probably need inspirations from **ChatGPT**)
 - **Where do you source the data** and **how costly** is the data?
-- At what **frequency** do you need to source the data?
+    - The trade-off between external vs internal data sources
+        - Pros: can provide otherwise unavailable information
+        - Cons: external dependencies may be costly, uncertainty in reliability/SLA, concern on backward compatiability, etc.
+- At what **frequency** do you need to source the data or do we already have data for?
 - How long should you spend sourcing data？
     - Unless there is prior experience, there is no golden rule of how much data is enough. Try to **get into the loop** of obtaining data - traing models - error analysis **as soon as possible**.
     - Instead of asking 'how long can we collect $m$ data'. Ask 'how much data can we collect in $k$ days'.
+        - If it is a given data set, clarify how big the data size is.
     - See this [graph](data/time-getting-data.ipynb).
 - Stress the importance of **data pipelines**, **data lineage** and **data provinance**, as well as the idea of **versioning data**.
 - What are the **advanced labeling techniques**: [advanced-labeling](data/advanced-labeling.ipynb).
@@ -50,11 +56,11 @@
 - **No missing, duplicated or erroneous** values: what counts as erroneous or outliers could be debatable.
 - **Consistent labeling**: there is no ambiguities or noise in $p(y|x)$. 
     - Eliminating labeling ambiguities sometimes is more effective in improving data quality and algo effectiveness, than obtaining more data.
-- $p(x)$ **covers the whole feature space**, or the desired region.
+- $p(x)$ **covers the whole feature space**, or the desired region: think about whether there could be **sampling biases**.
 - There is **no uninformative data**.
     - Watch out for **sparseness** and **low variance** columns; see the discussion of [degenerate distributions](data/feature-selection.ipynb) in the feature selection notebook.
     - All variables of $X$ should bear some relationship with $y$.
-- **Size appropriately**: sufficiently big for models to learn but not too much for models to train; further notes on [dataset size](data/data-size.ipynb)
+- **Size appropriately**: sufficiently big for models to learn but not too much for models to train; further notes on [dataset size](data/data-size.ipynb). 
 
 #### Some other things to [check](data/data-checks.ipynb)
 
@@ -75,7 +81,7 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
     - box plots (for outlier detection): on $X$ and/or $y$
     - [scatter plots](data/scatter-further-note.ipynb) between $X$ and $y$
         - works particularly well for low-dimensional $X$;
-        - for high-dimensional $X$, maybe a slice of data), .
+        - for high-dimensional $X$, maybe a slice of data, or after dimension reduction.
 - **Correlations**: among $X$ and between $X$ and $y$; good to also show scatter plots.
 - **Outlier detection**: z-score, interquartile range (IQR)
 - **Dimension reduction**: Inspect principle directions and principle components for insights - [PCA](../unsupervised-learning/PCA.ipynb)
@@ -110,6 +116,9 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
     - Always start as simple as possible (KISS) and iterate over: **do not prematurely statistical optimization**.
 
 - Typical models
+    - [Hypothesis Testing](https://github.com/netantman/other-quant-methods/blob/master/hypothesis-testing.ipynb)
+        - What other factors can affect the test results? Is it possible to **design a controlled experiment**?
+        - If a relationship is confirmed a priori, could there be a possibility that the **causal relationship is reversed**?
     - [Linear regression](../supervised-learning/linear-regression.ipynb)
         - Assumptions, and what are the diagnostics for violations of them?
         - Closed-form of OLS? What are the geometric intuitions?
