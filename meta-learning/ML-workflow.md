@@ -183,7 +183,7 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
     
 ## Tuning ML models
 
-- [Loss functions]((models/evaluation-metrics-and-information-criterions.ipynb))
+- [Loss functions](models/evaluation-metrics-and-information-criterions.ipynb)
     - MSE, MAE, Huber loss: which one is most sensitive to outliers?
     - log likelihood
     - Binary/Categorical cross entropy (or KL Divergence)
