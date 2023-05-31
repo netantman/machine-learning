@@ -42,6 +42,7 @@
         - If it is a given data set, clarify how big the data size is.
     - See this [graph](data/time-getting-data.ipynb).
 - Stress the importance of **data pipelines**, **data lineage** and **data provinance**, as well as the idea of **versioning data**.
+- What could be the **limitation of this dataset** that perhaps other data sources/analysis can help mitigate?
 - What are the **advanced labeling techniques**: [advanced-labeling](data/advanced-labeling.ipynb).
     - Semi-supervised learning: how unlabeled data is associated in the feature space
     - Active learning: select the points to label that is most informative to the model
