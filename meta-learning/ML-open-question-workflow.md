@@ -18,7 +18,7 @@
 - System Limitations
     - What is the **budget**?
     - What is the **latency** needed?
-    - At what **frequencies** do you need the predictions?
+    - Will the required **frequencies** be constrained by system?
     - **Throughput**: what is the total number of predictions throughout the day?
     - Where is the model **deployed**?
 - Other considerations
@@ -91,6 +91,9 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
 ### [Feature Engineering](data/data-preprocessing-feature-engineering.ipynb)
 
 - **From economic intuitions**: probably need inspirations from **ChatGPT**
+    - Some $X$ may **not have a monotonic relationship** with $y$
+    - Beware of feature engineering that **leaks $y$'s information into $X$**.
+    - Careful not to include something that could be **confounding in the sense of causal inference**
 
 - **Scaling**: min-max, normalization and standardization - just be very careful to do consistently across training and testing.
 
