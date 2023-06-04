@@ -87,6 +87,7 @@ The **motivation** is to better understand both $p(x)$ and $p(y|x)$.
 - **Outlier detection**: z-score, interquartile range (IQR)
 - **Dimension reduction**: Inspect principle directions and principle components for insights - [PCA](../unsupervised-learning/PCA.ipynb)
 - **Cluster analysis**: [K-Means](../unsupervised-learning/Kmeans.ipynb)
+- (See if anything can be distilled from this [post](https://www.evernote.com/shard/s191/nl/21353936/3b216335-f7cf-4245-b5f4-482a4d30f4e4?title=Exploratory%20Data%20Analysis%20Cheatsheet%20(everything%20you%20might%20need)%20%7C%20by%20Datasans%20%7C%20Medium))
 
 ### [Feature Engineering](data/data-preprocessing-feature-engineering.ipynb)
 
